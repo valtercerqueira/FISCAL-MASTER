@@ -1,0 +1,17 @@
+{
+  "name": "fiscalmaster-api",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@supabase/supabase-js": "^2.39.0",
+    "resend": "^2.1.0",
+    "@anthropic-ai/sdk": "^0.32.0"
+  }
+}
