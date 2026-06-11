@@ -76,19 +76,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  const allowed = [
-    'https://fiscalmaster.com.br',
-    'https://www.fiscalmaster.com.br',
-    process.env.BASE_URL || '',
-  ];
-  const origin = req.headers.origin || '';
-  if (allowed.includes(origin) || !origin) {
-    res.setHeader('Access-Control-Allow-Origin', origin || '*');
-  } else {
-    res.setHeader('Access-Control-Allow-Origin', 'https://fiscalmaster.com.br');
-  }
+  // CORS aberto para permitir chamadas do simulador HTML estático na Hostinger
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,x-webhook-token');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type,x-webhook-token,x-kiwify-signature');
   if (req.method === 'OPTIONS') return res.sendStatus(204);
   next();
 });
